@@ -1,1 +1,1 @@
-export { default as Task } from './Task/Task'
+export { default as TaskTile } from './TaskTile/TaskTile'

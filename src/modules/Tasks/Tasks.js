@@ -1,36 +1,33 @@
-import React, { useEffect } from 'react'
-import { Button } from 'components/atoms'
-import { Task } from 'components/molecules'
+import React, { useEffect, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Button } from 'components/atoms'
+import { TaskTile } from 'components/molecules'
 
 const Tasks = () => {
   const dispatch = useDispatch()
   const tasks = useSelector(state => state.tasks.value)
 
+  const createTask = useCallback(() => dispatch({type: 'CREATE_TASK'}), [dispatch])
+  const fetchTasks = useCallback(() => dispatch({type: 'TASKS_REQUESTED'}), [dispatch])
+
   useEffect(() => {
     dispatch({ type: 'TASKS_REQUESTED' })
   }, [dispatch])
 
-  const onCreate = () => {
-    dispatch({type: 'CREATE_TASK'})
-  }
-
-  const onFetch = () => {
-    dispatch({type: 'TASKS_REQUESTED'})
-  }
-
-  const tasksList = () => {
-    return tasks.map(task => {
-      return <Task task={task} key={task.id}>
+  const tasksList = () => (
+    tasks.map(task => <TaskTile
+        task={task}
+        key={task.id}
+      >
         {task.title}
-      </Task>
-    })
-  }
+      </TaskTile>
+    )
+  )
 
   return <div>
     <h1>Processes</h1>
-    <Button onClick={onCreate}>Create</Button>
-    <Button onClick={onFetch}>Fetch</Button>
+    <Button onClick={createTask}>Create</Button>
+    <Button onClick={fetchTasks}>Fetch</Button>
     {tasksList()}
   </div>
 }
