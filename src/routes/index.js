@@ -6,7 +6,8 @@ import NotFound from './NotFound/NotFound'
 
 const Routes = () => (
   <Switch>
-    <Route path={routes.root()} component={Home} />
+    <Route exact path={routes.root()} component={Home} />
+    <Route path={routes.subtasks()} component={() => <button>aaaaaaaaaa</button>} />
     <Route component={NotFound} />
   </Switch>
 )
