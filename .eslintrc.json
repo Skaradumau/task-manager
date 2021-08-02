@@ -79,6 +79,12 @@
         "react/jsx-no-constructed-context-values": "off",
         "react/prop-types": "off"
       }
+    },
+    {
+      "files": ["src/store/*Reducer.js"],
+      "rules": {
+        "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state"] }]
+      }
     }
   ]
 }

@@ -20,6 +20,10 @@ export default createGlobalStyle`
     font-weight: 400;
     font-size: 14px;
     line-height: 1.4;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background: #ebecf0;
   }
 
   a {
